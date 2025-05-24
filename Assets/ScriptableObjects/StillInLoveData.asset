@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicName: StillInLove
   animationName: Twerk
-  notesConfig: {fileID: 0}
+  notesConfig: {fileID: 4900000, guid: 659d7952ec94fb34e98b1b42e693fada, type: 3}
+  speed: 20
