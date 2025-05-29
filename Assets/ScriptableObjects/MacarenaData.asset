@@ -15,4 +15,4 @@ MonoBehaviour:
   musicName: Macarena
   animationName: Macarena
   notesConfig: {fileID: 4900000, guid: 0087fec694254b04a8010ad93b447290, type: 3}
-  speed: 20
+  speed: 200

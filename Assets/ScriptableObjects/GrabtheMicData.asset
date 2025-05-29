@@ -15,4 +15,4 @@ MonoBehaviour:
   musicName: GrabtheMic
   animationName: HipHop
   notesConfig: {fileID: 4900000, guid: e791fb231bcf475499e8e2b49e71550e, type: 3}
-  speed: 20
+  speed: 200

@@ -3,7 +3,7 @@ using UnityEngine;
 public class Note : MonoBehaviour
 {
     [SerializeField]
-    private float speed = 5f;
+    private float speed = 10f;
     public float Speed
     {
         get { return speed; }
