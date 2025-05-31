@@ -1,5 +1,7 @@
 using UnityEngine;
+using System.Linq;
 using UnityEngine.Events;
+using System.Collections;
 
 public class DanceController : MonoBehaviour
 {
@@ -11,6 +13,11 @@ public class DanceController : MonoBehaviour
     private UnityEvent _onSelectDance;
     [SerializeField]
     private UnityEvent _onDanceSelected;
+    [SerializeField]
+
+    private string _failAnimationName;
+
+    private Coroutine _resetDanceCoroutine;
     private SoundData _currentSoundData;
 
     public void ActivateSelectDance()
@@ -31,8 +38,21 @@ public class DanceController : MonoBehaviour
         _notesManager.StartNoteChart(_currentSoundData.notesConfig, _currentSoundData.speed);
     }
 
-    /*public void FailedNote()
-    { 
-
-    }*/
+   public void FailedNote()
+    {
+        if (_resetDanceCoroutine != null)
+        {
+            StopCoroutine(_resetDanceCoroutine);
+        }
+        _resetDanceCoroutine = StartCoroutine(ResetDance());
+    }
+ 
+    public IEnumerator ResetDance()
+    {
+        _characterAnimator.Play(_failAnimationName,0, 0f);
+        float failAnimationLength = _characterAnimator.runtimeAnimatorController.animationClips.First(clip => clip.name== _failAnimationName).length;
+        yield return new WaitForSeconds(failAnimationLength);
+        _characterAnimator.Play(_currentSoundData.animationName);
+        _resetDanceCoroutine = null;
+    }
 }
